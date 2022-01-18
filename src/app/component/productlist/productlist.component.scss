@@ -1,0 +1,76 @@
+body {
+    padding-bottom:60px;   /* Height of the footer */
+ }
+footer {
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:60px;   /* Height of the footer */
+    background:#6cf;
+ }
+.container{
+    margin-top: 50px;
+    min-height:100%;
+    position:relative;
+ }
+.btn-primary-custom{
+    background-color: rgb(33, 173, 92);
+    border-radius: 15px;
+    color: white;
+}
+.btn-primary{
+    background-color: rgb(43, 43, 43);
+    border-radius: 15px;
+}
+.btn-danger{
+    background-color: rgb(179, 0, 0);
+    border-radius: 15px;
+}
+.detail{
+    word-wrap: break-word;
+    min-width: 150px; 
+    max-width: 150px; 
+    white-space:normal;
+}
+.productname{
+    word-wrap: break-word;
+    min-width: 100px; 
+    max-width: 100px; 
+    white-space:normal;
+}
+.catagory{
+    word-wrap: break-word;
+    min-width: 100px; 
+    max-width: 100px; 
+    white-space:normal;
+}
+.price{
+    word-wrap: break-word;
+    min-width: 60px; 
+    max-width: 60px; 
+    white-space:normal;
+}
+.img-pic{
+    width: 50px;
+}
+.img-content{
+    width: 600px;
+    height: 600px;
+}
+.form-check{
+    padding-left: 0%;
+}
+select{
+    background: white url("data:image/svg+xml;utf8,<svg viewBox='0 0 140 140' width='16' height='16' xmlns='http://www.w3.org/2000/svg'><g><path d='m121.3,34.6c-1.6-1.6-4.2-1.6-5.8,0l-51,51.1-51.1-51.1c-1.6-1.6-4.2-1.6-5.8,0-1.6,1.6-1.6,4.2 0,5.8l53.9,53.9c0.8,0.8 1.8,1.2 2.9,1.2 1,0 2.1-0.4 2.9-1.2l53.9-53.9c1.7-1.6 1.7-4.2 0.1-5.8z' fill='black'/></g></svg>") no-repeat;
+    background-position: right 5px top 50%;
+}
+.icon{
+    text-align: center;
+}
+.modalpic{
+    width: 650px;
+    height: 700px;
+}
+.pointer{
+    cursor: pointer;
+}

@@ -1,0 +1,115 @@
+<div class="container" *ngIf="products.length != 0">
+    <div class="card-table">
+        <div class="order-product">
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Productname</th>
+                        <th>Image</th>
+                        <th>Detail</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of products; let i = index">
+                        <td class="w4">{{i+1}}</td>
+                        <td class="w15">{{item.Productname}}</td>
+                        <td class="w15"><img  src="{{item.ImagePath}}" alt="{{item.Productname}}"></td>
+                        <td class="w40">{{item.Detail}}</td>
+                        <th class="w4">{{item.Price}}</th>
+                        <td class="w4">{{item.quantity}}</td>
+                        <td class="w4">{{item.total}}</td>
+                        <td class="w4">
+                            <button (click)="onDecrease(item)" class="btn btn-primary" *ngIf="item.quantity != 1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-lg" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"/>
+                                  </svg>
+                            </button>
+                        </td>
+                        <td class="w4">
+                            <button (click)="onIncrease(item)" class="btn btn-primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                                  </svg>
+                            </button>
+                        </td>
+                        <td class="w4">
+                            <button (click)="removeitem(item,i)" class="btn btn-danger">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                  </svg>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+        </div>
+    </div>
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center border-bottom mb-3">
+        <button class="btn btn-primary-black" routerLink="/product">back to menu</button>
+        <div class="flex-row-reverse justify-content-end d-flex">
+            <div class="total">
+                <button class="btn btn-primary-custom"  data-bs-toggle="modal" data-bs-target="#orderModal">Checkout</button>
+            </div>
+            <div class="total">
+                <strong>Total price : {{total}}.-</strong>
+            </div>
+            <div class="total">
+                <strong>All : {{iteminorder}} ea</strong>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" *ngIf="products.length == 0">
+    <div class="card-table empty">
+        <h1 class="emptyorder"><strong>Empty Order</strong></h1>
+        <div class="pic">
+            <img class="emptyreceipt" src="./../../../assets/content/EMPTYRECEIPT.JPG" alt="emptyreceipt">
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title d-flex justify-content-center" id="orderModalLabel">Order</h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="listul">
+                <ul class="ul" *ngFor="let item of products; let i = index">
+                    <li>
+                        {{i+1}}.{{item.Productname}} X {{item.quantity}} ea = {{item.total}}.-
+                    </li>
+                </ul>
+            </div>
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center border-bottom mb-3">
+                <p></p>
+                <div class="flex-row-reverse justify-content-end d-flex">
+                    <div class="total">
+                        <strong>All : {{iteminorder}} ea ,Total price : {{total}}.-</strong>
+                    </div>
+                </div>
+            </div>
+          <form [formGroup]="orderForm"  (ngSubmit)="orderFormSubmit()">
+            <div class="mb-3">
+              <label for="table" class="form-label">table</label>
+              <input formControlName="table" [class.is-invalid]="table.touched && table.invalid" type="number" min="0" max="12" class="form-control" id="table"/>
+              <div *ngIf="table.hasError('required')" class="d-block invalid-feedback">
+                if you want to take home. Pls fill 0.
+              </div>
+            </div>
+            <button [disabled]="orderForm.invalid" data-bs-dismiss="modal" type="submit" class=" mt-3 btn btn-primary w-100">Ordering</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

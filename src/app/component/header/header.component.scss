@@ -1,0 +1,106 @@
+.navbar-custom{
+    background-color: rgb(43, 43, 43);
+    box-shadow: 0 5px 5px rgba(0,0,0,.7);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.form-control{
+    border-radius: 3px;
+    width: 100%;
+}
+.nav-main > li > a {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+    height: 75px;
+    padding: 0 30px;
+    color: #ffffff;
+    border-radius: 15px;
+}
+.nav-item {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+    height: 75px;
+    color: #ffffff;
+    border-radius: 15px;
+}
+.nav-link:hover, .active {
+    background-color: rgb(146, 146, 146);
+    border-radius: 15px;
+    
+}
+.dropdown-toggle, .active{
+    
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+    height: 75px;
+    padding: 0 30px;
+    border-radius: 15px;
+    background-color: rgb(43, 43, 43);
+}
+
+.dropdown-menu{
+    background-color: rgb(43, 43, 43);
+    border-radius: 15px;
+    top: 75px;
+}
+.dropdown-item{
+    align-items: center;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    height: 50px;
+    padding: 0 30px;
+    color: #ffffff;
+    
+}
+.dropdown-item:hover{
+    background-color: rgb(146, 146, 146);
+}
+.active{
+    
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    height: 50px;
+    padding: 0 30px;
+    color: #ffffff;
+    background-color: rgb(146, 146, 146);
+    
+}
+.modal-title{
+    font-size: 20px;
+    padding-left: 45%;
+}
+.signinp{
+    margin-bottom: 0px;
+    padding-top:20px
+}
+
+.btn-primary{
+    background-color: rgb(43, 43, 43);
+    border-radius: 15px;
+    border-color: rgb(43, 43, 43);
+}
+
+.btn:hover, .active {
+    background-color: rgb(146, 146, 146);
+    border-radius: 15px;
+    
+}
+
+.icon{
+    font-size: 30px;
+}
+.notify{
+   font-size: 10px;
+   position: relative;
+   top: -10px;
+   left: -10px;
+}

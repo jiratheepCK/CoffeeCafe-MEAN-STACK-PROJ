@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center border-bottom mb-3">
+        <h1>User List (User : {{user.length}})</h1>
+        <div class="flex-row-reverse justify-content-end d-flex">
+            <h2></h2>
+        </div>
+    </div>
+    
+    <div class="table-responsive text-nowrap">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Firstname</th>
+                    <th scope="col">Lastname</th>
+                    <th scope="col">Giftpoint</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of user; let i=index">
+                    <td scope="row">{{i+1}}</td>
+                    <td scope="row">{{item._id}}</td>
+                    <td scope="row" class="user">{{item.firstname}}</td>
+                    <td scope="row" >{{item.lastname}}</td>
+                    <td scope="row" class="totalprice">{{item.giftpoint}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

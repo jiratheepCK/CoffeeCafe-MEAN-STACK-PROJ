@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="row">
+        <div class="product col" *ngFor="let item of product">
+            <div class="product-card">
+                <img *ngIf="item.status" [src]="item.ImagePath" [alt]="item.Productname" (click) = "onAddquantity(item)" data-bs-toggle="modal" data-bs-target="#productModal">
+                <img class="noproduct" *ngIf="!item.status" [src]="item.ImagePath" [alt]="item.Productname">
+                <div class="product-box">
+                    <h1 class="food-menu">{{item.Productname}}</h1>
+                    <span class="food-price">{{item.Price}}.-</span>
+                </div>
+                <div *ngIf="item.status" class="button-product justify-content-center d-flex">
+                        <button type="button" (click)=addtoOrder(item) class="btn btn-primary">Add to Order</button>
+                </div>
+                <div *ngIf="!item.status" class="justify-content-center d-flex">
+                    <h2>No Product</h2>
+                </div>
+                <!--<div class="button-product justify-content-center d-flex">
+                    <button type="button" (click)=addquantitytoOrder(item,10) class="btn btn-primary">Add to Order</button>
+                </div>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--modal product-->
+<div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title d-flex justify-content-center" id="productModalLabel">Add to Order</h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="productForm"  (ngSubmit)="addquantitytoOrder()">
+            <div class="textnameandpice">
+                <p class="textnameandpice" ><strong> {{itemName}} ({{itemPrice}}.-) </strong></p>
+            </div>
+            <div class="row">
+                <img class="inmodal" src="{{itemPath}}" alt="itemquantity.ImagePath">
+                <div class="col-md contentinmodal">
+                    <p>{{itemDetail}}</p>
+                </div>
+            </div>
+            <div class="col-sm">
+                <label for="quantity" class="form-label">Quantity</label>
+                <input formControlName="quantity" [class.is-invalid]="quantity.touched && quantity.invalid" type="number" class="form-control" id="quantity" min="0"/>
+                    <div *ngIf="quantity.touched && quantity.hasError('required')" class="d-block invalid-feedback">
+                        quantity is required
+                    </div>
+                    <div *ngIf="quantity.touched && quantity.hasError('min') || quantity.hasError('pattern')" class="d-block invalid-feedback">
+                        quantity is incorrect
+                    </div>
+            </div>
+            <button [disabled]="productForm.invalid" data-bs-dismiss="modal" type="submit" class=" mt-3 btn btn-primary w-100">Add Product</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
