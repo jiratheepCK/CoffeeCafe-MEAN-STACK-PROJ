@@ -1,6 +1,6 @@
 # CoffeeCafeBaanjib
 
-### Docker
+## Docker-Compose
 <code>docker-compose up --build</code>
 
 
