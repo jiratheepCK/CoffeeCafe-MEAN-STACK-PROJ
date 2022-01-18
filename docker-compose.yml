@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  app:
+    container_name: backendcoffeecafe
+    restart: always
+    build: ./backend
+    ports:
+      - '4000:4000'
+    depends_on:
+      - mongo
+  angular:
+    container_name: frontendcoffeecafe
+    build: .
+    ports:
+      - '80:4200'
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - '27017:27017'
+    volumes:
+      - data-db:/data/db
+volumes:
+  data-db:
+  
