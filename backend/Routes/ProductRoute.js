@@ -3,6 +3,10 @@ const Product = require('../Models/ProductModel');
 const { checkAuthorization ,checkadmin} = require('../Middleware/Auth');
 const multer = require('multer');
 const fs = require('fs');
+var dir = './../public';
+if (!fs.existsSync(dir)){
+    fs.mkdirSync(dir);
+}
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, 'public/')
